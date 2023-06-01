@@ -9,9 +9,9 @@ local Translations = {
     text = {
         the_cash_register_is_empty = "Tämä kassakone on tyhjä",
         try_combination = "~g~E~w~ - Yritä yhdistelmää",
-        safe_opened = "Lokero avattu",
+        safe_opened = "Kassakaappi avattu",
         emptying_the_register= "Tyhjennetään kassakonetta..",
-        safe_code = "Lokeron koodi: "
+        safe_code = "Kassakaapin koodi: "
     },
     email = {
         shop_robbery = "10-31 | Kauppa ryöstö",
