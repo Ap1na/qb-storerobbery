@@ -68,14 +68,24 @@ CreateThread(function()
                                         TriggerServerEvent('hud:server:GainStress', math.random(1, 3))
                                     end
                                     if Config.Safes[safe].type == "keypad" then
-                                        SendNUIMessage({
-                                            action = "openKeypad",
-                                        })
-                                        SetNuiFocus(true, true)
-                                    else
                                         QBCore.Functions.TriggerCallback('qb-storerobbery:server:getPadlockCombination', function(combination)
-                                            TriggerEvent("SafeCracker:StartMinigame", combination)
+                                            exports['ps-ui']:Circle(function(success)
+                                                if success then
+                                                    QBCore.Functions.Notify("You robbed the Safe!", "success")
+                                                    SetNuiFocus(false, false)
+                                                    TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
+                                                    TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
+                                                    currentSafe = 0
+                                                    FreezeEntityPosition(PlayerPedId(), false)
+                                                    ClearPedTasksImmediately(PlayerPedId())
+                                                else
+                                                    QBCore.Functions.Notify("You failed to rob the Safe...", "error")
+                                                    FreezeEntityPosition(PlayerPedId(), false)
+                                                    ClearPedTasksImmediately(PlayerPedId())
+                                                end
+                                            end, 10, 30) -- NumberOfCircles, MS
                                         end, safe)
+                                        SetNuiFocus(true, true)
                                     end
 
                                     if not copsCalled then
@@ -317,27 +327,6 @@ end
 RegisterNUICallback('callcops', function(_, cb)
     TriggerEvent("police:SetCopAlert")
     cb('ok')
-end)
-
-RegisterNetEvent('SafeCracker:EndMinigame', function(won)
-    if currentSafe ~= 0 then
-        if won then
-            if currentSafe ~= 0 then
-                if not Config.Safes[currentSafe].robbed then
-                    SetNuiFocus(false, false)
-                    TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
-                    TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
-                    currentSafe = 0
-                    takeAnim()
-                end
-            else
-                SendNUIMessage({
-                    action = "kekw",
-                })
-            end
-        end
-    end
-    copsCalled = false
 end)
 
 RegisterNUICallback('PadLockSuccess', function(_, cb)
