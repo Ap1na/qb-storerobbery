@@ -42,7 +42,7 @@ Config.Registers = {
     [32] = {vector3(162.16, 6643.22, 31.6), robbed = false, time = 0, safeKey = 19, camId = 29},
 }
 
--- Currently the only 1 available is "circle" i didn't have time to do the other minigames
+-- Current avalable ones: "circle", "maze", "var", "thermite", "scrambler"
 
 Config.Safes = {
     [1] = {vector4(-43.43, -1748.3, 29.42,  52.5), type = "circle", robbed = false, camId = 4},

@@ -1,7 +1,7 @@
 # qb-storerobbery
 Store Robberies For QB-Core
 
-the only minigame available at this moment is "circle" i didn't have time to do the other minigames
+not sure if this even works im too lazy to test it
 
 # License
 

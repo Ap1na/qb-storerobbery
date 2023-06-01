@@ -67,24 +67,94 @@ CreateThread(function()
                                     if math.random(100) <= 50 then
                                         TriggerServerEvent('hud:server:GainStress', math.random(1, 3))
                                     end
-                                    if Config.Safes[safe].type == "keypad" then
-                                        QBCore.Functions.TriggerCallback('qb-storerobbery:server:getPadlockCombination', function(combination)
-                                            exports['ps-ui']:Circle(function(success)
-                                                if success then
-                                                    QBCore.Functions.Notify("You robbed the Safe!", "success")
-                                                    SetNuiFocus(false, false)
-                                                    TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
-                                                    TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
-                                                    currentSafe = 0
-                                                    FreezeEntityPosition(PlayerPedId(), false)
-                                                    ClearPedTasksImmediately(PlayerPedId())
-                                                else
-                                                    QBCore.Functions.Notify("You failed to rob the Safe...", "error")
-                                                    FreezeEntityPosition(PlayerPedId(), false)
-                                                    ClearPedTasksImmediately(PlayerPedId())
-                                                end
-                                            end, 10, 30) -- NumberOfCircles, MS
-                                        end, safe)
+                                    if Config.Safes[safe].type == "circle" then
+                                        exports['ps-ui']:Circle(function(success)
+                                            if success then
+                                                QBCore.Functions.Notify("You robbed the Safe!", "success")
+                                                SetNuiFocus(false, false)
+                                                TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
+                                                TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
+                                                currentSafe = 0
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            else
+                                                QBCore.Functions.Notify("You failed to rob the Safe...", "error")
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            end
+                                        end, 10, 30) -- NumberOfCircles, MS
+                                        SetNuiFocus(true, true)
+                                    end
+                                    if Config.Safes[safe].type == "maze" then
+                                        exports['ps-ui']:Maze(function(success)
+                                            if success then
+                                                QBCore.Functions.Notify("You robbed the Safe!", "success")
+                                                SetNuiFocus(false, false)
+                                                TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
+                                                TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
+                                                currentSafe = 0
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            else
+                                                QBCore.Functions.Notify("You failed to rob the Safe...", "error")
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            end
+                                        end, 20) -- Hack Time Limit
+                                        SetNuiFocus(true, true)
+                                    end
+                                    if Config.Safes[safe].type == "var" then
+                                        exports['ps-ui']:VarHack(function(success)
+                                            if success then
+                                                QBCore.Functions.Notify("You robbed the Safe!", "success")
+                                                SetNuiFocus(false, false)
+                                                TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
+                                                TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
+                                                currentSafe = 0
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            else
+                                                QBCore.Functions.Notify("You failed to rob the Safe...", "error")
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            end
+                                        end, 2, 3) -- Number of Blocks, Time (seconds)
+                                        SetNuiFocus(true, true)
+                                    end
+                                    if Config.Safes[safe].type == "thermite" then
+                                        exports['ps-ui']:Thermite(function(success)
+                                            if success then
+                                                QBCore.Functions.Notify("You robbed the Safe!", "success")
+                                                SetNuiFocus(false, false)
+                                                TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
+                                                TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
+                                                currentSafe = 0
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            else
+                                                QBCore.Functions.Notify("You failed to rob the Safe...", "error")
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            end
+                                        end, 10, 5, 3) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
+                                        SetNuiFocus(true, true)
+                                    end
+                                    if Config.Safes[safe].type == "scrambler" then
+                                        exports['ps-ui']:Scrambler(function(success)
+                                            if success then
+                                                QBCore.Functions.Notify("You robbed the Safe!", "success")
+                                                SetNuiFocus(false, false)
+                                                TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
+                                                TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
+                                                currentSafe = 0
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            else
+                                                QBCore.Functions.Notify("You failed to rob the Safe...", "error")
+                                                FreezeEntityPosition(PlayerPedId(), false)
+                                                ClearPedTasksImmediately(PlayerPedId())
+                                            end
+                                        end, "numeric", 30, 0) -- Type (alphabet, numeric, alphanumeric, greek, braille, runes), Time (Seconds), Mirrored (0: Normal, 1: Normal + Mirrored 2: Mirrored only )
                                         SetNuiFocus(true, true)
                                     end
 
