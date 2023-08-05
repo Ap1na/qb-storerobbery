@@ -1,6 +1,6 @@
 local Translations = {
     error = {
-        minimum_store_robbery_police = "Ei tarpeeksi poliiseja (tarvitset %{MinimumStoreRobberyPolice} ryöstääksesi)",
+        minimum_store_robbery_police = "Ei tarpeeksi poliiseja (tarvitset %{MinimumStoreRobberyPolice} poliisia ryöstääksesi)",
         not_driver = "Et ole kuski",
         demolish_vehicle = "Et saa purkaa ajoneuvvoja tällä hetkellä",
         process_canceled = "Toiminto peruttu..",
